@@ -1,6 +1,5 @@
-// will select all HTML elements in the document that have the class "numbers" and return them as a NodeList (a collection of DOM elements)
-const numbers = document.querySelectorAll(".numbers");
-const result = document.querySelectorAll(".result span");
+const numbers = document.querySelectorAll('.numbers');
+const result = document.querySelector('.result span');
 
 let firstValue = "";
 let isFirstValue = false;
@@ -10,17 +9,17 @@ let sign = "";
 let resultValue = 0;
 
 for (let i = 0; i < numbers.length; i++) {
-  numbers[i].addEventListener("click", (e) => {
-    let atr = e.target.getAttribute("value");
+  numbers[i].addEventListener('click', (event) => {
+    let numberValue = event.target.getAttribute('data-value'); // Use data-value
     if (isFirstValue === false) {
-      getFirstValue(atr);
+      getFirstValue(numberValue);
     }
   });
 }
 
-function getFirstValue(el) {
+function getFirstValue(numberValue) {
   result.innerHTML = "";
-  firstValue += el;
+  firstValue += numberValue;
   result.innerHTML = firstValue;
   firstValue = +firstValue;
 }
